@@ -1,0 +1,138 @@
+import java.util.Scanner;
+
+public class AbroadExam {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.println("___________________");
+        System.out.println("Yalini Abroad's Edu");
+        System.out.println("___________________");
+        System.out.print("Username:");
+        String name = s.nextLine();
+        System.out.print("Password:");
+        String password = s.nextLine();
+
+        if(name.equals("Yalini") && password.equals("yalini")){
+            System.out.println("Logged in !");
+            System.out.println("Available Exams:");
+            System.out.println("1. TOEFL");
+            System.out.println("2. GMAT");
+            System.out.println("3. GRE");
+            System.out.println();
+            System.out.print("Enter the exam number to register: ");
+            int examno = s.nextInt();
+
+            Exams exam;
+
+            switch (examno){
+                case 1:
+                    exam = new Toefl();
+                    break;
+                case 2:
+                    exam = new Gmat();
+                    break;
+                case 3:
+                    exam = new Gre();
+                    break;
+                default:
+                    System.out.println("Invalid exam number.");
+                    return;
+            }
+
+            exam.details();
+        }
+        else {
+            System.out.println("Invalid username or password. Logged out.");
+        }
+    }
+}
+
+interface Exams {
+    void details();
+}
+
+class Toefl implements Exams {
+    private String examName;
+    private int examFee;
+    private String examDate;
+
+    public Toefl() {
+        this.examName = "TOEFL";
+        this.examFee = 18000;
+        this.examDate = "Next available date: July 15, 2024";
+    }
+
+
+    public void details() {
+        System.out.println("TOEFL Exam Details:");
+        System.out.println("Name: " + examName);
+        System.out.println("Fee: Rs." + examFee);
+        System.out.println("Date: " + examDate);
+        System.out.println();
+        System.out.println("Would you like to register for TOEFL? (yes/no)");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("yes")) {
+            System.out.println("You have been registered for TOEFL.");
+        } else {
+            System.out.println("Registration cancelled.");
+        }
+    }
+}
+
+class Gmat implements Exams {
+    private String examName;
+    private int examFee;
+    private String examDate;
+
+    public Gmat() {
+        this.examName = "GMAT";
+        this.examFee = 12000;
+        this.examDate = "Next available date: August 1, 2024";
+    }
+
+
+    public void details() {
+        System.out.println("GMAT Exam Details:");
+        System.out.println("Name: " + examName);
+        System.out.println("Fee: Rs." + examFee);
+        System.out.println("Date: " + examDate);
+        System.out.println();
+        System.out.println("Would you like to register for GMAT? (yes/no)");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("yes")) {
+            System.out.println("You have been registered for GMAT.");
+        } else {
+            System.out.println("Registration cancelled.");
+        }
+    }
+}
+
+class Gre implements Exams {
+    private String examName;
+    private int examFee;
+    private String examDate;
+
+    public Gre() {
+        this.examName = "GRE";
+        this.examFee = 12000;
+        this.examDate = "Next available date: August 5, 2024";
+    }
+
+    @Override
+    public void details() {
+        System.out.println("GRE Exam Details:");
+        System.out.println("Name: " + examName);
+        System.out.println("Fee: Rs." + examFee);
+        System.out.println("Date: " + examDate);
+        System.out.println();
+        System.out.println("Would you like to register for GRE? (yes/no)");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        if (choice.equalsIgnoreCase("yes")) {
+            System.out.println("You have been registered for GRE.");
+        } else {
+            System.out.println("Registration cancelled.");
+        }
+    }
+}
